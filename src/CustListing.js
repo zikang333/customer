@@ -3,19 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 
 const CustListing = () => {
   const [empdata, empdatachange] = useState(null);
-  const navigate = useNavigate();
   const [custId, custIdchange] = useState("");
 
-  const LoadDetail = (id) => {
-    navigate("/customer/detail/" + id);
-  };
   const LoadEdit = (item) => {
     console.log(item);
-    fetch("https://localhost:7066/api/Cust/TogglePhoneStatus/", {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(item),
-    })
+    fetch(
+      "https://api20240226154105.azurewebsites.net/api/Cust/TogglePhoneStatus/",
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(item),
+      }
+    )
       .then((res) => {
         //alert('Activate/Deactivate successfully.')
         //window.location.reload();
@@ -27,11 +26,14 @@ const CustListing = () => {
   };
   const Removefunction = (item) => {
     if (window.confirm("Do you want to remove?")) {
-      fetch("https://localhost:7066/api/Cust/DeletePhone", {
-        method: "DELETE",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(item),
-      })
+      fetch(
+        "https://api20240226154105.azurewebsites.net/api/Cust/DeletePhone",
+        {
+          method: "DELETE",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(item),
+        }
+      )
         .then((resp) => {
           alert("Removed successfully.");
           window.location.reload();
@@ -44,7 +46,10 @@ const CustListing = () => {
 
   const Searchfunction = (id) => {
     if (id != "") {
-      fetch("https://localhost:7066/api/Cust/GetCustPhoneByCustId?custId=" + id)
+      fetch(
+        "https://api20240226154105.azurewebsites.net/api/Cust/GetCustPhoneByCustId?custId=" +
+          id
+      )
         .then((res) => {
           return res.json();
         })
@@ -55,7 +60,9 @@ const CustListing = () => {
           console.log(err.message);
         });
     } else {
-      fetch("https://localhost:7066/api/Cust/GetAllCustPhone")
+      fetch(
+        "https://api20240226154105.azurewebsites.net/api/cust/GetAllCustPhone"
+      )
         .then((res) => {
           return res.json();
         })
@@ -69,7 +76,9 @@ const CustListing = () => {
   };
 
   useEffect(() => {
-    fetch("https://localhost:7066/api/Cust/GetAllCustPhone")
+    fetch(
+      "https://api20240226154105.azurewebsites.net/api/Cust/GetAllCustPhone"
+    )
       .then((res) => {
         return res.json();
       })
@@ -115,7 +124,6 @@ const CustListing = () => {
               </a>
             </div>
           </div>
-
           <table className="table table-bordered">
             <thead className="bg-dark text-white">
               <tr>
