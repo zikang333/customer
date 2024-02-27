@@ -1,5 +1,7 @@
 # Customer Phone System GUI
 
+### Front End Technology: React JS
+
 This GUI comes with functionalities below:
 
 1. Get a list of phone numbers of all customers.
