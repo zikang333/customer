@@ -65,6 +65,7 @@ const CustCreate = () => {
                       <label>Phone Number</label>
                       <input
                         type="number"
+                        required
                         value={phoneNo}
                         onChange={(e) => phonechange(e.target.value)}
                         className="form-control"
